@@ -4,3 +4,8 @@ autopep8
 
 #* TESTS
 pytest
+
+flask
+pymongo
+dnspython
+pep8
