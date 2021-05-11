@@ -1,31 +1,106 @@
-# Gilded Rose Refactoring Kata
+# Ollivanders with Docker
+This Project belongs to @MateoGarciaG and @pau13-loop from Ollivanders Project. This Project is to practice Docker and DockerFile configuration to create a Container with gunicorn Server with Flask.
 
-This Kata was originally created by Terry Hughes (http://twitter.com/TerryHughes). It is already on GitHub [here](https://github.com/NotMyself/GildedRose). See also [Bobby Johnson's description of the kata](http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/).
 
-I translated the original C# into a few other languages, (with a little help from my friends!), and slightly changed the starting position. This means I've actually done a small amount of refactoring already compared with the original form of the kata, and made it easier to get going with writing tests by giving you one failing unit test to start with. I also added test fixtures for Text-Based approval testing with TextTest (see [the TextTests](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/master/texttests))
+[![status application](https://img.shields.io/badge/status-stable-brightgreen)](URL_Proyecto)
 
-As Bobby Johnson points out in his article ["Why Most Solutions to Gilded Rose Miss The Bigger Picture"](http://iamnotmyself.com/2012/12/07/why-most-solutions-to-gilded-rose-miss-the-bigger-picture), it'll actually give you
-better practice at handling a legacy code situation if you do this Kata in the original C#. However, I think this kata
-is also really useful for practicing writing good tests using different frameworks and approaches, and the small changes I've made help with that. I think it's also interesting to compare what the refactored code and tests look like in different programming languages.
+<!--Logos-->
 
-I wrote this article ["Writing Good Tests for the Gilded Rose Kata"](http://coding-is-like-cooking.info/2013/03/writing-good-tests-for-the-gilded-rose-kata/) about how you could use this kata in a [coding dojo](https://leanpub.com/codingdojohandbook).
+<br>
 
-## How to use this Kata
+<img src="doc/img/flask.png" width="180px">
 
-The simplest way is to just clone the code and start hacking away improving the design. You'll want to look at the ["Gilded Rose Requirements"](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/master/GildedRoseRequirements.txt) which explains what the code is for. I strongly advise you that you'll also need some tests if you want to make sure you don't break the code while you refactor.
+<br>
 
-You could write some unit tests yourself, using the requirements to identify suitable test cases. I've provided a failing unit test in a popular test framework as a starting point for most languages.
+<img src="doc/img/python-logo.png" width="100px">
 
-Alternatively, use the "Text-Based" tests provided in this repository. (Read more about that in the next section)
+<br>
 
-Whichever testing approach you choose, the idea of the exercise is to do some deliberate practice, and improve your skills at designing test cases and refactoring. The idea is not to re-write the code from scratch, but rather to practice designing tests, taking small steps, running the tests often, and incrementally improving the design. 
+<img src="doc/img/logocifp.png" width="180px">
 
-## Text-Based Approval Testing
+## Tabla de Contenidos
 
-This code comes with comprehensive tests that use this approach. For information about how to run them, see the [texttests README](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/master/texttests)
+1. [DockerFile Flask Ollivanders](#salidas-de-la-aplicacion)
+1. [Tecnologías Usadas](#tecnologias-usadas)
+1. [Reflexiones](#reflexiones)
+1. [Licencia](#licencia)
 
-## Better Code Hub
+---
 
-I analysed this repo according to the clean code standards on [Better Code Hub](https://bettercodehub.com) just to get an independent opinion of how bad the code is. Perhaps unsurprisingly, the compliance score is low!
+## DockerFile Flask Ollivanders
 
-[![BCH compliance](https://bettercodehub.com/edge/badge/emilybache/GildedRose-Refactoring-Kata?branch=master)](https://bettercodehub.com/) 
+```DockerFile
+FROM python:3.8-slim-buster
+
+COPY requirements.txt /
+RUN pip3 install -r /requirements.txt
+
+COPY . /app
+WORKDIR /app
+
+ENTRYPOINT ["./gunicorn.sh"]
+
+```
+
+``` Guni#!/bin/sh
+#!/bin/sh
+gunicorn --chdir app app:app -w 2 --threads 2 -b 0.0.0.0:80
+
+```
+
+
+**[⬆ back to top](#tabla-de-contenidos)**
+
+
+## Tecnologías Usadas
+
+- Python 3
+- Docker
+- Visual Studio Code
+- Git
+- Flask
+
+
+
+**[⬆ back to top](#tabla-de-contenidos)**
+
+
+---
+
+## Reflexiones
+### Que has mejorado con este proyecto?
+This project let me know how to create and managed to a DockerFile with Flask and Gunicorn server.
+
+
+
+**[⬆ back to top](#tabla-de-contenidos)**
+
+
+---
+
+
+
+## Licencia
+
+MIT License
+
+Copyright (c) 2021 Mateo Garcia Gonzalez
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+
+**[⬆ back to top](#tabla-de-contenidos)**
+
+---
+
+
+## Autor
+Mateo Garcia Gonzalez
