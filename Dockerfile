@@ -47,3 +47,11 @@ COPY . /app
 WORKDIR /app
 
 ENTRYPOINT ["./gunicorn.sh"]
+
+
+# Comandos que he usado:
+# Creación Imagen a partir del Dockerfile:
+# docker build -t mgarciag2021/ollivanders_app .
+
+# Crear contenedor he iniciarlo (se elimina cuando se para el contenedor por el --rm):
+# docker run -it --rm --name flask-ollivanders -p 8095:80 mgarciag2021/ollivanders_app
