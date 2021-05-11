@@ -48,7 +48,7 @@ gunicorn --chdir app app:app -w 2 --threads 2 -b 0.0.0.0:80
 
 ```
 
-### Run container Docker Ollivanders App
+### Run Docker Container Server Gunicorn Ollivanders App
 <br>
 
 <img src="doc/img/docker-run-ollivanders.png" width="500px">
